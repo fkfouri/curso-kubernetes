@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment                                        #Objeto tipo de deployment
+metadata:
+  name: aplicacao-noticia-deployment
+spec: 
+  selector:
+    matchLabels:
+      name: aplicacao-noticia-pod
+  template:
+    metadata:
+      labels:
+        name: aplicacao-noticia-pod                     #Etiqueta de identificacao
+    spec:
+      containers:                                       #containers
+        - name: container-aplicacao
+          image: jnlucas/noticia-alura:v1
+          ports:
+            - containerPort: 80                         # para acessar os pods precisamos colocar um controlador
+          volumeMounts:
+          - name: hostvol
+            mountPath: /var/www/html/
+      volumes:
+        - name: hostvol
+          hostPath:
+            path: E:/Projetos/Alura/curso-kubernetes/noticias

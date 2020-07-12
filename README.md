@@ -18,12 +18,14 @@ O comando para acesso ssh ao docker encontrado foi esse:
 # Kubernetes
 
 
-### Inserir a aplicação no cluster kubernetes.
+### Inserir o objeto no cluster kubernetes a parir de um arquivo YAML.
 Na pasta kubernetes rodar o seguinte comando:
 
 ```kubectl create -f aplicacao.yaml```
 
-## PODS
+### Remover a objeto do cluster kubernetes a partir de um arquivo YAML.
+
+```kubectl delete -f aplicacao.yaml```
 
 ### visualizar os objetos do cluster kubernetes
 
@@ -31,27 +33,59 @@ Na pasta kubernetes rodar o seguinte comando:
 kubectl get pods
 kubectl get deployments
 kubectl get services
+kubectl get nodes
 ```
-
 e
-
 ```
 kubectl get pod <nome-do-pod>
 kubectl get deployment <nome-do-deployment>
 kubectl get service <nome-do-service>
 ```
+Obter mais informaçoes usar o flag ```-o wide```.
+```
+kubectl get pods -o wide
+```
 
-### Obter informaçoes do POD
+### Entender melhor um recurso
+```
+kubectl explain nodes
+kubectl explain pod
+```
 
-```kubectl describe pods``` ou ```kubectl describe pods aplicacao-noticia```
+### Obter informaçoes detalhadas
 
-### remover o Pod
+É possivel identificar o IP da aplicação.
 
-```kubectl delete pods aplicacao-noticia```
+```
+kubectl describe pods
+kubectl describe pods <nome-do-pod>
+```
 
+### remover objeto
 
-## Nodes
+```
+kubectl delete pods <nome-do-pod>
+kubectl delete deployment <nome-deployment>
+kubectl delete service <nome-service>
+``
 
-### visualizar os Nodes do cluster kubernetes
+### Ver logs
+```
+kubectl logs <nome-do-pod>
+```
 
-```kubectl get nodes```
+## LoadBalancer
+
+### Para identificar o IP da aplicacao, precisa-se perguntar para o minikube e não para o kubectl.
+
+```minikube service <nome-servico> --url```
+
+### Para acessar o container, da mesma forma que o docker.
+```
+kubectl exec -it <nome-do-pod> bash
+```
+
+ou
+```
+kubectl exec <nome-do-pod> bash
+```
