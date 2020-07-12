@@ -17,15 +17,40 @@ O comando para acesso ssh ao docker encontrado foi esse:
 
 # Kubernetes
 
-## Inserir a aplicação no cluster kubernetes.
+
+### Inserir a aplicação no cluster kubernetes.
 Na pasta kubernetes rodar o seguinte comando:
 
 ```kubectl create -f aplicacao.yaml```
 
-## visualizar as aplicações do cluster k
+## PODS
 
-```kubectl get pods```
+### visualizar os objetos do cluster kubernetes
 
-## Obter informaçoes do POD
+```
+kubectl get pods
+kubectl get deployments
+kubectl get services
 
-```kubectl describe pods``` ou ```kubectl describe pods aplicao-noticia```
+e
+
+```
+kubectl get pod <nome-do-pod>
+kubectl get deployment <nome-do-deployment>
+kubectl get service <nome-do-service>
+```
+
+### Obter informaçoes do POD
+
+```kubectl describe pods``` ou ```kubectl describe pods aplicacao-noticia```
+
+### remover o Pod
+
+```kubectl delete pods aplicacao-noticia```
+
+
+## Nodes
+
+### visualizar os Nodes do cluster kubernetes
+
+```kubectl get nodes```
