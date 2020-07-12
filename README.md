@@ -31,6 +31,7 @@ Na pasta kubernetes rodar o seguinte comando:
 kubectl get pods
 kubectl get deployments
 kubectl get services
+```
 
 e
 
