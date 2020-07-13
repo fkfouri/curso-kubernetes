@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Statefulset                                        #Objeto tipo  Statefulset                                        #Objeto tipo de deployment
+metadata:
+  name: aplicacao-sistema-statefulset
+spec:
+  serviceName: aplicacao-sistema-statefulset            #necessario definir o ServiceName
+  selector: 
+    matchLabels:
+      name: aplicacao-sistema-pod-statefulset
+  template:
+    metadata:
+      labels:
+        name: aplicacao-sistema-pod-statefulset
+    spec:
+      containers:
+        - name: container-aplicacao-sistema-pod-statefulset
+          image: jnlucas/noticia-alura:v2               #a tag v2 eh uma imagem do sistema
+          ports:
+            - containerPort: 80                         # para acessar os pods precisamos colocar um controlador
+          volumeMounts:
+            - name: imagens
+              mountPath: /var/www/html/uploads
+            - name: sessoes
+              mountPath: /tmp
+      volumes:
+        - name: imagens
+          persistentVolumeClaim:
+            claimName: permissao-imagens
+        - name: sessoes
+          persistentVolumeClaim:
+            claimName: permissao-sessoes

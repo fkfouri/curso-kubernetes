@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment                                        #Objeto tipo de deployment
+metadata:
+  name: aplicacao-sistema-deployment
+spec:
+  selector: 
+    matchLabels:
+      name: aplicacao-sistema-pod
+  template:
+    metadata:
+      labels:
+        name: aplicacao-sistema-pod
+    spec:
+      containers:
+        - name: container-sistema
+          image: jnlucas/noticia-alura:v2               #a tag v2 eh uma imagem do sistema
+          ports:
+            - containerPort: 80                         # para acessar os pods precisamos colocar um controlador

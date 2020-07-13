@@ -13,6 +13,6 @@ spec:
     spec:
       containers:                                       #containers
         - name: container-aplicacao
-          image: jnlucas/noticia-alura:v1
+          image: jnlucas/noticia-alura:v1               #a tag v1 eh uma imagem de noticias
           ports:
             - containerPort: 80                         # para acessar os pods precisamos colocar um controlador
