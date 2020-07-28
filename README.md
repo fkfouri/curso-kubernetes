@@ -23,11 +23,14 @@ Suba o ambiente com o docker-compose ```docker-compose up -d```
 
 # Kubernetes
 
+Primeiro passo é instalar o Kubernetes. Localmente sera instalado o minikube e o kubectl. Existe um passo a passo para cada plataforma (windows, linus, ios)
 
 ### Inserir o objeto no cluster kubernetes a parir de um arquivo YAML.
-Na pasta kubernetes rodar o seguinte comando:
+Na pasta kubernetes rodar o seguinte comando: 
 
 ```kubectl create -f aplicacao.yaml```
+
+-f significa file.
 
 ### Remover a objeto do cluster kubernetes a partir de um arquivo YAML.
 
