@@ -4,6 +4,8 @@ Este é um estudo sobre a utilização do Kubernetes.
 
 A Aplicação é um site de notícias da alura, que ao longo do dia apresenta lentidão elevada devido a picos de utilização.
 
+Estudo: https://docs.google.com/document/d/1UgcEUKV_AVBkC6HVXloQe7ZcZxDI7RadScxuElBwfQU/edit#heading=h.cr9h198n50sx
+
 ## Conectanto com ssh o Docker-Toolbox
 https://stackoverflow.com/questions/30330442/how-to-ssh-into-docker-machine-virtualbox-instance
 
@@ -21,9 +23,18 @@ Rode o comando no prompt para entrar no linux: ```wsl```
 
 Suba o ambiente com o docker-compose ```docker-compose up -d```
 
-# Kubernetes
+# Minikube e kubectl
 
-Primeiro passo é instalar o Kubernetes. Localmente sera instalado o minikube e o kubectl. Existe um passo a passo para cada plataforma (windows, linus, ios)
+Primeiro passo é instalar o Kubernetes. Localmente necessita-se instalar o minikube e o kubectl. Existe um passo a passo para cada plataforma (windows, linus, ios).
+- https://kubernetes.io/docs/tasks/tools/install-kubectl/
+- https://kubernetes.io/docs/tasks/tools/install-minikube/
+
+
+Para iniciar o minikube, rode ```minikube start```. Isso iniciará o minikube no Oracle Virtual Box.
+
+Apos check se o minikube esta rodando ```minikube status```.
+
+# Kubernetes
 
 ### Inserir o objeto no cluster kubernetes a parir de um arquivo YAML.
 Na pasta kubernetes rodar o seguinte comando: 
