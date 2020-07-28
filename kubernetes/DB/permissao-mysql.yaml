@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: persistentVolumeClaim
+metadata:
+  name: configuracao-mysql
+spec:
+  accessModes:
+    - ReadWriteOnce                         # somente um maquina tem acess
+  reources:
+    requests: 
+      storage: 3Gi

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: container-aplicacao-sistema-pod-statefulset
-          image: jnlucas/noticia-alura:v2               #a tag v2 eh uma imagem do sistema
+          image: jnlucas/noticia-alura:v4              #a tag v4 eh uma imagem do sistema com arquivo sh
           ports:
             - containerPort: 80                         # para acessar os pods precisamos colocar um controlador
           volumeMounts:
@@ -22,6 +22,10 @@ spec:
               mountPath: /var/www/html/uploads
             - name: sessoes
               mountPath: /tmp
+          lifecycle: 
+            postStart:
+              exec: 
+                command: ["sh", "enviarMensagens.sh"]   # no exercicio, é um SH que envia mensagem para o SLACK
       volumes:
         - name: imagens
           persistentVolumeClaim:

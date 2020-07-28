@@ -15,6 +15,12 @@ O comando para acesso ssh ao docker encontrado foi esse:
 
 - ```ssh.exe -F /dev/null -o ConnectionAttempts=3 -o ConnectTimeout=10 -o ControlMaster=no -o ControlPath=none -o LogLevel=quiet -o PasswordAuthentication=no -o ServerAliveInterval=60 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null docker@127.0.0.1 -o IdentitiesOnly=yes -i %userprofile%\.docker\machine\machines\default\id_rsa -p 61025```
 
+## Conectando com WSL2
+
+Rode o comando no prompt para entrar no linux: ```wsl```
+
+Suba o ambiente com o docker-compose ```docker-compose up -d```
+
 # Kubernetes
 
 
@@ -73,6 +79,14 @@ kubectl delete service <nome-service>
 ```
 kubectl logs <nome-do-pod>
 ```
+
+### Editar o YAML pelo kubectl
+
+```
+kubectl edit deployment <nome-deployment>
+```
+
+
 
 ## LoadBalancer
 
