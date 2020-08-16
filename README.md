@@ -29,21 +29,14 @@ Rode o comando no prompt para entrar no linux: ```wsl```
 
 Suba o ambiente com o docker-compose ```docker-compose up -d```
 
-# Minikube e kubectl
+## Instalação do Minikube e kubectl
 
 Primeiro passo é instalar o Kubernetes. Localmente necessita-se instalar o minikube e o kubectl. Existe um passo a passo para cada plataforma (windows, linus, ios).
 - https://kubernetes.io/docs/tasks/tools/install-kubectl/
 - https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 
-Para iniciar o minikube, rode ```minikube start```. Isso iniciará o minikube no Oracle Virtual Box.
-
-Apos check se o minikube esta rodando ```minikube status```.
-
-Dashboard é uma pagina web para acompanhar as configuracoes do minikube. ```minikube dashboard```
-
 # Kubernetes
-
 
 
 ## Kubernetes tipos:
@@ -152,7 +145,26 @@ Minikube é uma implementação do Kubernetes. O minikube é uma implementação
 
 ## Comandos
 
-### Para identificar o IP da aplicacao, precisa-se perguntar para o minikube e não para o kubectl.
+### Inciar o minikube
 
-```minikube service <nome-servico> --url```
+Rode o comando ```minikube start```. Isso iniciará o minikube no Oracle Virtual Box dentro do windows ou um docker no linux.
 
+### Check do minikube
+
+Verificar se o minikube esta em funcionamento: `minikube status`
+
+### Dashboard do minikube
+
+Dashboard é uma pagina web para acompanhar as configuracoes do kubernetes. 
+
+`minikube dashboard`
+
+### Identificação do IP da aplicacao
+
+Para identificar o IP da aplicacao, precisa-se perguntar para o minikube e não para o kubectl.
+
+`minikube service <nome-servico> --url`
+
+### Rodar Kubectl dentro do minikube
+
+`minikube kubectl -- get pods`
