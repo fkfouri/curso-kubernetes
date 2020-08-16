@@ -44,11 +44,7 @@ Dashboard é uma pagina web para acompanhar as configuracoes do minikube. ```min
 
 # Kubernetes
 
-## Minikube
-Minikube é uma implementação do Kubernetes. O minikube é uma implementação de simples uso do Kubernetes. Existem outras como Google GKE, Amazon EKS ou Azure Kubernetes Service.
 
-## Kubectl
-Kubectl é a interface de linha de comando para gerenciar Kubernetes.
 
 ## Kubernetes tipos:
 - POD:
@@ -78,6 +74,10 @@ Kubectl é a interface de linha de comando para gerenciar Kubernetes.
         - *volumes*: associa nome do volume com uma permissão.
         - *PersistentVolumeClaim*: define as permissões e o tamanho do recurso.
 
+# Kubectl
+Kubectl é a interface de linha de comando para gerenciar Kubernetes.
+
+## Comandos
 
 ### Inserir o objeto no cluster kubernetes a parir de um arquivo YAML.
 Na pasta kubernetes rodar o seguinte comando: 
@@ -143,14 +143,16 @@ kubectl logs <nome-do-pod>
 kubectl edit deployment <nome-deployment>
 ```
 
+### Para acessar o container, da mesma forma que o docker.
 
+`kubectl exec -it <nome-do-pod> bash` ou  `kubectl exec <nome-do-pod> bash`
 
-## LoadBalancer
+# Minikube
+Minikube é uma implementação do Kubernetes. O minikube é uma implementação de simples uso do Kubernetes. Existem outras como Google GKE, Amazon EKS ou Azure Kubernetes Service.
+
+## Comandos
 
 ### Para identificar o IP da aplicacao, precisa-se perguntar para o minikube e não para o kubectl.
 
 ```minikube service <nome-servico> --url```
 
-### Para acessar o container, da mesma forma que o docker.
-
-`kubectl exec -it <nome-do-pod> bash` ou  `kubectl exec <nome-do-pod> bash`
