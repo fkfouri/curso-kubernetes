@@ -6,6 +6,7 @@ A Aplicação é um site de notícias da alura, que ao longo do dia apresenta le
 
 Estudo: https://docs.google.com/document/d/1UgcEUKV_AVBkC6HVXloQe7ZcZxDI7RadScxuElBwfQU/edit#heading=h.cr9h198n50sx
 
+
 ## Conectanto com ssh o Docker-Toolbox
 https://stackoverflow.com/questions/30330442/how-to-ssh-into-docker-machine-virtualbox-instance
 
@@ -18,6 +19,11 @@ O comando para acesso ssh ao docker encontrado foi esse:
 - ```ssh.exe -F /dev/null -o ConnectionAttempts=3 -o ConnectTimeout=10 -o ControlMaster=no -o ControlPath=none -o LogLevel=quiet -o PasswordAuthentication=no -o ServerAliveInterval=60 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null docker@127.0.0.1 -o IdentitiesOnly=yes -i %userprofile%\.docker\machine\machines\default\id_rsa -p 61025```
 
 ## Conectando com WSL2
+
+Rode o comando `wsl --list --verbose` ou `wsl -l -v` para visualziar as distribuicoes linux instalada, estado e versao (WLS).
+
+Em seguida selecione a distro padrao: `wsl -s <nome_distro>`
+
 
 Rode o comando no prompt para entrar no linux: ```wsl```
 
@@ -37,6 +43,41 @@ Apos check se o minikube esta rodando ```minikube status```.
 Dashboard é uma pagina web para acompanhar as configuracoes do minikube. ```minikube dashboard```
 
 # Kubernetes
+
+## Minikube
+Minikube é uma implementação do Kubernetes. O minikube é uma implementação de simples uso do Kubernetes. Existem outras como Google GKE, Amazon EKS ou Azure Kubernetes Service.
+
+## Kubectl
+Kubectl é a interface de linha de comando para gerenciar Kubernetes.
+
+## Kubernetes tipos:
+- POD:
+    - Menor unidade de deploy no Kubernetes.
+    - Um Pod normalmente tem apenas um container associado, mas existe a possibilidade de definir outros containers no mesmo Pod, desde que varia a porta de rede entre os containers isso funciona.
+    - Um Pod tem um IP.
+    - Objeto do Kubernetes descrito por um arquivo YML.
+    - Quando se deleta um POD de uma aplicação no Kubernetes o mesmo é removido. Diferentemente de um deployment, quando se deleta um POD o Kubernetes já sobe outro POD no lugar.
+
+- Deployment:
+    - É responsável por definir a quantidade de réplicas do Pod. Podemos definir através dashboard, pelo kubectl ou na arquivo yml a quantidade de réplicas. 
+    - É  responsável por garantir que o Pod está disponível (rodando). Um Pod criado SEM deployment não garante disponibilidade.
+    - Funciona como controlador do POD, define a quantidade de replcias e a disponibilidade do POD.
+    - o Deployment é um controller **stateless**, ou seja, nao compartilha nenhuma informacao entre PODS.
+
+- Service LoadBalancer
+    - É um servico do Kubernetes que dá acesso ao deployment.
+    - O serviço fica associado ao deployment ou PODs através do *Selector*.
+    - o comando `minikube service <nome-servico> --url` devolve a url para testar o serviço.
+
+- StatefulSet
+    - permite o compartilhamento de informações entre PODs.
+    - tambem usa um POD por debaixo dos panos.
+    - garante que atraves dos volumes, os dados serão mantidos mesmo se o POD for reiniciado.
+    - necessario definir:
+        - *volumeMounts*: define a pasta concreta de montagem e da um nome para o volume.
+        - *volumes*: associa nome do volume com uma permissão.
+        - *PersistentVolumeClaim*: define as permissões e o tamanho do recurso.
+
 
 ### Inserir o objeto no cluster kubernetes a parir de um arquivo YAML.
 Na pasta kubernetes rodar o seguinte comando: 
