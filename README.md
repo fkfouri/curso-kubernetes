@@ -34,6 +34,8 @@ Para iniciar o minikube, rode ```minikube start```. Isso iniciará o minikube no
 
 Apos check se o minikube esta rodando ```minikube status```.
 
+Dashboard é uma pagina web para acompanhar as configuracoes do minikube. ```minikube dashboard```
+
 # Kubernetes
 
 ### Inserir o objeto no cluster kubernetes a parir de um arquivo YAML.
@@ -87,7 +89,7 @@ kubectl describe pods <nome-do-pod>
 kubectl delete pods <nome-do-pod>
 kubectl delete deployment <nome-deployment>
 kubectl delete service <nome-service>
-``
+```
 
 ### Ver logs
 ```
@@ -109,11 +111,5 @@ kubectl edit deployment <nome-deployment>
 ```minikube service <nome-servico> --url```
 
 ### Para acessar o container, da mesma forma que o docker.
-```
-kubectl exec -it <nome-do-pod> bash
-```
 
-ou
-```
-kubectl exec <nome-do-pod> bash
-```
+`kubectl exec -it <nome-do-pod> bash` ou  `kubectl exec <nome-do-pod> bash`
